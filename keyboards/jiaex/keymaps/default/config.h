@@ -47,6 +47,7 @@ enum jiaex_layers {
 enum custom_keycodes {  //   # Make sure have the awesome keycode ready
     ALT_TAB = SAFE_RANGE,
     VSCODE_CTRL_TAB,
+    MAC_CMD_TAB,
     PROG_RIGHT_ARROW,      // ->
     PROG_FAT_RIGHT_ARROW,  //=>
     COPY_URL_IN_BROWSER,    // F6 -> Ctrl+C

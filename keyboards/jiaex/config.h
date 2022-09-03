@@ -65,7 +65,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define LEADER_PER_KEY_TIMING
 #define ONESHOT_TIMEOUT 350
 
-#define COMBO_COUNT 10
+#define COMBO_COUNT 11
 #define COMBO_TERM 100
 
 // #define DEBUG_MATRIX_SCAN_RATE

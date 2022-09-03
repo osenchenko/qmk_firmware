@@ -3,11 +3,9 @@
 #include "quantum_keycodes.h"
 
 
-//Linux-MacOS combination
-
 #define SC_PASTE LCTL(KC_V)
 
-// #define LIN_ALT_TAB        LALT(KC_TAB)           //Switch windows Alt+Tab
+#define LIN_ALT_TAB        LALT(KC_TAB)           //Switch windows Alt+Tab
 #define LIN_SW_TO_WS_DOWN  LGUI(KC_PGDOWN)    // Switch to workspace down
 #define LIN_SW_TO_WS_UP    LGUI(KC_PGUP)      //Switch to workspace up
 #define LIN_LAUNCHER       LGUI(KC_S)             // Show windows + launcher prompt
@@ -27,18 +25,18 @@
  #define LIN_  //
 */
 
-// #define MAC_ALT_TAB           LGUI(KC_ESC)             //Switch windows Alt+Tab
-#define MAC_SW_TO_WS_LEFT     LCTL(KC_LEFT)      // Switch to workspace left
-#define MAC_SW_TO_WS_RIGHT    LCTL(KC_RIGHT)     //Switch to workspace right
-#define MAC_LAUNCHER          LGUI(KC_SPACE)             // Show windows + launcher prompt
-#define MAC_TAB_RIGHT         LCTL(KC_TAB)          // Switch browser tab right
-#define MAC_TAB_LEFT          LCTL(LSFT(KC_TAB))            // Switch browser tab left
-#define MAC_MV_DISP_LEFT      LCTL(LALT(KC_LEFT))      // Move window to display left
-#define MAC_MV_DISP_RIGHT     LCTL(LALT(KC_RIGHT))     // Move window to display right
-// #define MAC_SW_LANG_ENG       LCTL(KC_SPACE)          // Switch language to english
-#define MAC_CLOSE_WIN         LGUI(KC_Q)             // Close window Alt+F4
-#define MAC_CLOSE_TAB         LGUI(KC_W)               // Close tab in browser
-#define MAC_MAX_WIN           LCAG(KC_UP)              // Maximize window
+#define WIN_ALT_TAB           LALT(KC_TAB)             //Switch windows Alt+Tab
+#define WIN_SW_TO_WS_LEFT     LGUI(LCTL(KC_LEFT))      // Switch to workspace left
+#define WIN_SW_TO_WS_RIGHT    LGUI(LCTL(KC_RIGHT))     //Switch to workspace right
+#define WIN_LAUNCHER          LGUI(KC_TAB)             // Show windows + launcher prompt
+#define WIN_TAB_RIGHT         LCTL(KC_PGDOWN)          // Switch browser tab right
+#define WIN_TAB_LEFT          LCTL(KC_PGUP)            // Switch browser tab left
+#define WIN_MV_DISP_LEFT      LSFT(LGUI(KC_LEFT))      // Move window to display left
+#define WIN_MV_DISP_RIGHT     LSFT(LGUI(KC_RIGHT))     // Move window to display right
+#define WIN_SW_LANG_ENG       LALT(KC_LSHIFT)          // Switch language to english
+#define WIN_CLOSE_WIN         LALT(KC_F4)              // Close window Alt+F4
+#define WIN_CLOSE_TAB         LCTL(KC_W)               // Close tab in browser
+#define WIN_MAX_WIN           LGUI(KC_UP)              // Maximize window
 
 
 /*
@@ -145,27 +143,27 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //└───────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┘  /* | */ └───────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┴────────────────┴──────────────────┴───────────────┘
 ),
 
-[MAC] = LAYOUT(
+[WIN] = LAYOUT(
 //┌───────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┐          ┌───────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┬────────────────┬──────────────────┬───────────────┐
-     LGUI(KC_S),         KC_1,          KC_2,               KC_3,          KC_4,               KC_5,          KC_NO,           /* | */      KC_NO,         KC_6,               KC_7,               KC_8,          KC_9,          KC_0,               LGUI(KC_Z),    /*NO_KEY*/
+     LCTL(KC_S),         KC_1,          KC_2,               KC_3,          KC_4,               KC_5,          KC_NO,           /* | */      KC_NO,         KC_6,               KC_7,               KC_8,          KC_9,          KC_0,               LCTL(KC_Z),    /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
      KC_ESC,             KC_Q,          KC_W,               KC_E,          KC_R,               KC_T,          LCTL(KC_X),      /* | */      KC_LEAD,       KC_Y,               KC_U,               KC_I,          KC_O,          KC_P,               KC_LBRC,       KC_RBRC,
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     KC_BSPACE,          KC_A,          KC_S,           LT(MAC_FN2,KC_D),  KC_F,               KC_G,          /*NO_KEY*/       /* | */   /*NO_KEY*/        KC_H,               KC_J,               KC_K,          KC_L,          KC_SCOLON,          KC_QUOTE,    RGUI_T(KC_ENTER),
+     KC_BSPACE,          KC_A,          KC_S,           LT(WIN_FN2,KC_D),  KC_F,               KC_G,          /*NO_KEY*/       /* | */   /*NO_KEY*/        KC_H,               KC_J,               KC_K,          KC_L,          KC_SCOLON,          KC_QUOTE,    RGUI_T(KC_ENTER),
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
      LCTL(KC_LSFT),      KC_Z,          KC_X,               KC_C,          KC_V,               KC_B,          LCTL(KC_C),      /* | */     LCTL(KC_C),     KC_N,               KC_M,               KC_COMM,       KC_DOT,        KC_SLSH,        LCTL(KC_LSFT),   /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     /*NO_KEY*/      KC_LCTL,           KC_LGUI,            KC_LALT,        TT(MAC_FN1),    OSM(MOD_LSFT),LT(SHORTCUTS,KC_F24),/* | */ LT(SHORTCUTS,KC_ESC),LT(MAC_SYM,KC_SPC),LT(MAC_FN3,KC_BSPACE),KC_LALT,     KC_LGUI,       KC_LCTL       /*NO_KEY*/    /*NO_KEY*/
+     /*NO_KEY*/      KC_LALT,           KC_LCTL,            KC_LALT,        TT(WIN_FN1),    OSM(MOD_LSFT),LT(SHORTCUTS,KC_TAB),/* | */ LT(SHORTCUTS,KC_ESC),LT(WIN_SYM,KC_SPC),LT(WIN_FN3,KC_BSPACE),KC_LALT,     KC_RCTL,       KC_LALT       /*NO_KEY*/    /*NO_KEY*/
 //└───────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┘  /* | */ └───────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┴────────────────┴──────────────────┴───────────────┘
 ),
 
-[MAC_SYM] = LAYOUT(
+[WIN_SYM] = LAYOUT(
 //┌───────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┐          ┌───────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┬────────────────┬──────────────────┬───────────────┐
-     MO(SPECIAL),     LCTL(KC_1),       LCTL(KC_2),      RALT(KC_3)/*№*/,  KC_NO,              MAC_MAX_WIN,   KC_NO,           /* | */      KC_NO,         KC_NO,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              MO(SPECIAL),   /*NO_KEY*/
+     MO(SPECIAL),     LCTL(KC_1),       LCTL(KC_2),      RALT(KC_3)/*№*/,  KC_NO,              WIN_MAX_WIN,   KC_NO,           /* | */      KC_NO,         KC_NO,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              MO(SPECIAL),   /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     KC_ESC,             KC_NO,         RALT(KC_GRAVE),  LSFT(KC_GRAVE),   KC_GRAVE,        RALT(KC_T)/*ё*/,  KC_NO,           /* | */      KC_NO,     PROG_FAT_RIGHT_ARROW,KC_BSLASH,    LSFT(KC_BSLASH), RALT(KC_BSLASH),   KC_NO,              KC_NO,         KC_NO,
+     KC_ESC,             KC_NO,         RALT(KC_GRAVE),  LSFT(KC_GRAVE),   KC_GRAVE,        RALT(KC_T)/*ё*/,  KC_NO,           /* | */      KC_NO,     PROG_FAT_RIGHT_ARROW,RALT(KC_BSLASH),    LSFT(KC_BSLASH), KC_BSLASH,   KC_NO,              KC_NO,         KC_NO,
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     KC_BSPACE,      RALT(KC_COMM),     LSFT(KC_9),  RALT(LSFT(KC_LBRACKET)),  KC_MINUS,   RALT(KC_LBRACKET), /*NO_KEY*/      /* | */    /*NO_KEY*/       RALT(KC_RBRACKET), KC_EQUAL, RALT(LSFT(KC_RBRACKET)),LSFT(KC_0),    LGUI(KC_BSLASH),          KC_NO,         KC_NO,
+     KC_BSPACE,      RALT(KC_COMM),     LSFT(KC_9),  RALT(LSFT(KC_LBRACKET)),  KC_MINUS,   RALT(KC_LBRACKET), /*NO_KEY*/      /* | */    /*NO_KEY*/       RALT(KC_RBRACKET), KC_EQUAL, RALT(LSFT(KC_RBRACKET)),LSFT(KC_0),  KC_NO,              KC_NO,         KC_NO,
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
    LCTL(KC_LSFT), LCTL(RALT(KC_GRAVE)), RALT(KC_X), LSFT(KC_MINUS),        RALT(KC_V),         LSFT(KC_MINUS),    KC_NO,       /* | */      KC_NO,      PROG_RIGHT_ARROW,  LSFT(KC_EQUAL), RALT(KC_COMM),      RALT(KC_DOT),    RALT(KC_SLASH),  RCTL(KC_RSFT),     /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
@@ -174,23 +172,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //└───────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┘  /* | */ └───────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┴────────────────┴──────────────────┴───────────────┘
 ),
 
-[MAC_FN1] = LAYOUT(
+[WIN_FN1] = LAYOUT(
 //┌───────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┐          ┌───────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┬────────────────┬──────────────────┬───────────────┐
-     TG(MAC_FN2),    SCMD(LALT(KC_F)),   LGUI(KC_MINUS), LGUI(KC_EQUAL),       KC_F4,              KC_F5,         KC_NO,        /* | */      KC_NO,         KC_F6,              KC_F7,              KC_F8,         KC_F9,         KC_F10,             LCTL(KC_Y),    /*NO_KEY*/
+     TG(WIN_FN2),        KC_F1,         KC_F2,              KC_F3,         KC_F4,              KC_F5,         KC_NO,           /* | */      KC_NO,         KC_F6,              KC_F7,              KC_F8,         KC_F9,         KC_F10,             LCTL(KC_Y),    /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     KC_ESC,        MAC_CLOSE_WIN,    MAC_TAB_LEFT,     VSCODE_CTRL_TAB,   MAC_TAB_RIGHT,    MAC_CLOSE_TAB,COPY_URL_IN_BROWSER,/* | */    KC_NO,           KC_HOME,             KC_PGDN,          KC_PGUP,        KC_END,       KC_NO,        KC_F11,        KC_F12,
+     KC_ESC,          LALT(KC_F4),    WIN_TAB_LEFT,     VSCODE_CTRL_TAB,   WIN_TAB_RIGHT,    WIN_CLOSE_TAB,COPY_URL_IN_BROWSER,/* | */    LCTL(KC_HOME),   KC_HOME,            KC_PGDOWN,          KC_PGUP,       KC_END,       LCTL(KC_END),        KC_F11,        KC_F12,
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     KC_DELETE,       LGUI(KC_A),    MAC_SW_TO_WS_LEFT,   MAC_CMD_TAB,       MAC_SW_TO_WS_RIGHT, MAC_LAUNCHER,    /*NO_KEY*/       /* | */      /*NO_KEY*/     KC_LEFT,            KC_DOWN,            KC_UP,         KC_RIGHT,      KC_ENTER,          KC_NO,         KC_LGUI,
+     KC_DELETE,       LCTL(KC_A),    WIN_SW_TO_WS_LEFT,   ALT_TAB,       WIN_SW_TO_WS_RIGHT, WIN_LAUNCHER,    /*NO_KEY*/       /* | */      /*NO_KEY*/     KC_LEFT,            KC_DOWN,            KC_UP,         KC_RIGHT,      KC_ENTER,           KC_NO,         KC_LGUI,
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     KC_LSFT,      MAC_MV_DISP_LEFT,    KC_NO,              KC_NO,       MAC_MV_DISP_RIGHT,    LGUI(KC_M),      KC_PSCREEN,      /* | */      KC_NO,      LALT(KC_LEFT),   LCTL(KC_DOWN),      LCTL(KC_UP),     LALT(KC_RIGHT), LSFT(KC_DOWN) ,        KC_RSFT,       /*NO_KEY*/
+     KC_LSFT,      WIN_MV_DISP_LEFT,    KC_NO,              KC_NO,       WIN_MV_DISP_RIGHT,    HYPR(KC_9),      KC_PSCREEN,      /* | */      KC_NO,         LCTL(KC_LEFT),   LCTL(KC_DOWN),      LCTL(KC_UP),   LCTL(KC_RIGHT),   KC_INSERT ,         KC_RSFT,       /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
-     /*NO_KEY*/      LCTL(KC_LALT),     KC_LCTL,        TG(LEFT_NUMBERS),   TG(MAC_FN1),       KC_LGUI,         KC_TAB,           /* | */      KC_NO,         KC_LSFT,         MO(FN_KEYS),          KC_LALT,       KC_RCTL,      RCTL(KC_LALT)        /*NO_KEY*/     /*NO_KEY*/
+     /*NO_KEY*/      LCTL(KC_LALT),     KC_LCTL,        TG(LEFT_NUMBERS),   TG(WIN_FN1),       KC_LGUI,         KC_TAB,           /* | */      KC_NO,         KC_LSFT,         MO(FN_KEYS),          KC_LALT,       KC_RCTL,      RCTL(KC_LALT)        /*NO_KEY*/     /*NO_KEY*/
 //└───────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┘  /* | */ └───────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┴────────────────┴──────────────────┴───────────────┘
 ),
 
-[MAC_FN2] = LAYOUT(
+[WIN_FN2] = LAYOUT(
 //┌───────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┐          ┌───────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┬────────────────┬──────────────────┬───────────────┐
-     TG(MAC_FN2),        KC_NO,         KC_NO,              KC_NO,         MAC_CLOSE_WIN,      MAC_MAX_WIN,   TG(MAC_FN2),     /* | */      KC_NO,         KC_NO,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              KC_NO,         /*NO_KEY*/
+     TG(WIN_FN2),        KC_NO,         KC_NO,              KC_NO,         WIN_CLOSE_WIN,      WIN_MAX_WIN,   TG(WIN_FN2),     /* | */      KC_NO,         KC_NO,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              KC_NO,         /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
      KC_ESC,             KC_NO,         KC_VOLD,              KC_UP,         KC_VOLU,              KC_SPC,        KC_RETURN,       /* | */      KC_NO,         KC_NO,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              KC_NO,         KC_NO,
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
@@ -202,7 +200,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //└───────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┘  /* | */ └───────────────┴─────────────────┴─────────────────┴─────────────────┴───────────────┴────────────────┴──────────────────┴───────────────┘
 ),
 
-[MAC_FN3] = LAYOUT(
+[WIN_FN3] = LAYOUT(
 //┌───────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┐          ┌───────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┬────────────────┬──────────────────┬───────────────┐
      KC_NO,             KC_NO,         KC_NO,              KC_NO,         KC_NO,              KC_NO,         KC_NO,           /* | */      KC_NO,         KC_NO,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              KC_NO,         /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤  /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
@@ -288,7 +286,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 [SPECIAL] = LAYOUT(
 //┌───────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┐         ┌───────────────┬─────────────────┬─────────────────┬─────────────────┬───────────────┬────────────────┬──────────────────┬───────────────┐
-     KC_NO,              DF(LIN),       DF(MAC),            KC_NO,         KC_NO,            EEPROM_RESET,         RESET,          /* | */       RESET,   EEPROM_RESET,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              KC_NO,         /*NO_KEY*/
+     KC_NO,              DF(LIN),       DF(WIN),            KC_NO,         KC_NO,            EEPROM_RESET,         RESET,          /* | */       RESET,   EEPROM_RESET,              KC_NO,              KC_NO,         KC_NO,         KC_NO,              KC_NO,         /*NO_KEY*/
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤ /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤
      KC_ESC,             KC_NO,         KC_NO,              KC_NO,         KC_NO,              KC_NO,         KC_NO,          /* | */       KC_NO,         KC_NO,              KC_NO,              KC_NO,         KC_NO,         KC_PAUSE,           KC_NO,         KC_NO,
 //├───────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┤ /* | */ ├───────────────┼─────────────────┼─────────────────┼─────────────────┼───────────────┼────────────────┼──────────────────┼───────────────┤

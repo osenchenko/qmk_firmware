@@ -23,7 +23,8 @@ enum combos {
     PASTE_COMBO,
     COMMA_WITH_SPACE,
     PRINT_SCR_COMBO,
-    CTRL_BSPACE_COMBO
+    CTRL_BSPACE_COMBO,
+    MAC_SW_LANG_ENG_COMBO
 };
 
 const uint16_t PROGMEM ctrl_s_combo1[] = {KC_W, KC_I, KC_O, COMBO_END};
@@ -34,12 +35,14 @@ const uint16_t PROGMEM copy_combo[] = {KC_S,KC_E, KC_F, COMBO_END};
 const uint16_t PROGMEM cut_combo[] = {KC_W, KC_E, KC_F, COMBO_END};
 const uint16_t PROGMEM enter_combo[] = {KC_S, KC_F, KC_SCOLON, COMBO_END};
 const uint16_t PROGMEM lang_sw_combo[] = {KC_S, KC_F, KC_J, COMBO_END};
+const uint16_t PROGMEM mac_lang_sw_eng_combo[] = {KC_S, KC_F, KC_L, COMBO_END};
 const uint16_t PROGMEM print_scr_combo[] = {KC_S, KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM escape_combo[] = {KC_U, KC_I, KC_O, COMBO_END};
 const uint16_t PROGMEM ctrl_bspace_combo[] = {KC_S, KC_K, KC_L, COMBO_END};
 // const uint16_t PROGMEM _combo[] = {, COMBO_END};
 // const uint16_t PROGMEM _combo[] = {, COMBO_END};
 // const uint16_t PROGMEM _combo[] = {, COMBO_END};
+
 
 combo_t key_combos[COMBO_COUNT] = {
   [CTRL_S_SAVE_1] = COMBO_ACTION(ctrl_s_combo1),
@@ -52,8 +55,8 @@ combo_t key_combos[COMBO_COUNT] = {
   [PRINT_SCR_COMBO] = COMBO_ACTION(print_scr_combo),
   [CTRL_BSPACE_COMBO] = COMBO_ACTION(ctrl_bspace_combo),
   [LANG_SW_COMBO] = COMBO_ACTION(lang_sw_combo),
-  [ENTER_COMBO] = COMBO_ACTION(enter_combo)
-//   [_COMBO] = COMBO_ACTION(),
+  [ENTER_COMBO] = COMBO_ACTION(enter_combo),
+  [MAC_SW_LANG_ENG_COMBO] = COMBO_ACTION(mac_lang_sw_eng_combo),
 //   [_COMBO] = COMBO_ACTION(),
 //   [_COMBO] = COMBO_ACTION(),
 //   [_COMBO] = COMBO_ACTION(),
@@ -65,65 +68,104 @@ combo_t key_combos[COMBO_COUNT] = {
 void process_combo_event(uint16_t combo_index, bool pressed){
     switch(combo_index) {
         case CTRL_S_SAVE_1:
-            if (pressed)
-            {
+            if (pressed) {
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LGUI(KC_S));
+                    return;
+               }
                 tap_code16(LCTL(KC_S));
             }
+            return;
             break;
         case COMMA_WITH_SPACE:
-            if (pressed)
-            {
+            if (pressed) {
                 SEND_STRING(", ");
             }
             break;
         case PASTE_COMBO:
-            if (pressed)
-            {
+            if (pressed) {
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LGUI(KC_V));
+                    return;
+               }
                 tap_code16(LCTL(KC_V));
             }
+            return;
             break;
         case COPY_COMBO:
-            if (pressed)
-            {
+            if (pressed) {
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LGUI(KC_C));
+                    return;
+               }
                 tap_code16(LCTL(KC_C));
             }
+            return;
             break;
         case CUT_COMBO:
-            if (pressed)
-            {
+            if (pressed) {
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LGUI(KC_X));
+                    return;
+               }
                 tap_code16(LCTL(KC_X));
             }
+            return;
             break;
         case ESCAPE_COMBO:
-            if (pressed)
-            {
+            if (pressed) {
                 tap_code16(KC_ESCAPE);
             }
+            return;
             break;
         case PRINT_SCR_COMBO:
-            if (pressed)
-            {
+            if (pressed) {
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LCTL(LSFT(KC_1)));
+                    return;
+               }
                 tap_code16(KC_PSCREEN);
             }
+            return;
             break;
         case CTRL_BSPACE_COMBO:
-            if (pressed)
-            {
+            if (pressed) {
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LALT(KC_BSPACE));
+                    return;
+               }
                 tap_code16(LCTL(KC_BSPACE));
             }
+            return;
+            break;
+        case MAC_SW_LANG_ENG_COMBO:
+            if (pressed) {
+                if (IS_LAYER_ON_STATE(default_layer_state,LIN)) {
+                    tap_code16(HYPR(KC_E));
+                    return;
+               }
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LGUI(KC_RGUI));
+               }
+            }
+            return;
             break;
         case LANG_SW_COMBO:
-            if (pressed)
-            {
+            if (pressed) {
                if (IS_LAYER_ON_STATE(default_layer_state,LIN)) {
-                    tap_code16(KC_SCROLLLOCK);
-                    break;
+                    tap_code16(HYPR(KC_R));
+                    return;
                }
                if (IS_LAYER_ON_STATE(default_layer_state,WIN)) {
                     tap_code16(LALT(KC_LSHIFT));
-                    break;
+                    return;
+               }
+               if (IS_LAYER_ON_STATE(default_layer_state,MAC)) {
+                    tap_code16(LSFT(KC_RSFT));
+                    return;
                }
             }
+            return;
             break;
         case ENTER_COMBO:
             if (pressed)
@@ -145,6 +187,7 @@ void process_combo_event(uint16_t combo_index, bool pressed){
 
 bool is_alt_tab_active = false;
 bool is_vscode_ctrl_tab_active=false;
+bool is_mac_cmd_tab_active=false;
 
 LEADER_EXTERNS();
 
@@ -189,6 +232,14 @@ void matrix_scan_user(void) {
             unregister_code(KC_LCTRL);
         }
     }
+    if (is_mac_cmd_tab_active){
+        //second part of prossesing Alt-Tab
+        uint8_t r = get_highest_layer(layer_state);
+        if (r==LIN || r ==WIN || r==MAC) {
+            is_mac_cmd_tab_active=false;
+            unregister_code(KC_LGUI);
+        }
+    }
 }
 
 uint16_t key_timer;
@@ -213,6 +264,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             register_code(KC_TAB);
         } else {
             unregister_code(KC_TAB);
+        }
+        break;
+    case MAC_CMD_TAB:
+        //first part of prossessing Alt-Tab.
+        if (record->event.pressed) {
+                if(!is_mac_cmd_tab_active){
+                    is_mac_cmd_tab_active=true;
+                    register_code(KC_LGUI);
+                }
+            register_code(KC_ESC);
+        } else {
+            unregister_code(KC_ESC);
         }
         break;
     case VSCODE_CTRL_TAB:
@@ -340,6 +403,22 @@ void oled_task_user(void) {
             break;
         case WIN_FN3:
             oled_write_P(PSTR("Windows FN 3\n"), false);
+            return;
+            break;
+         case MAC_SYM:
+            oled_write_P(PSTR("MacOS symbols\n"), false);
+            return;
+            break;
+        case MAC_FN1:
+            oled_write_P(PSTR("MacOS FN 1\n"), false);
+            return;
+            break;
+        case MAC_FN2:
+            oled_write_P(PSTR("MacOS FN 2\n"), false);
+            return;
+            break;
+        case MAC_FN3:
+            oled_write_P(PSTR("MacOS FN 3\n"), false);
             return;
             break;
         case SHORTCUTS:
