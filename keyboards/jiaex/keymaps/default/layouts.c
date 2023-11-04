@@ -10,7 +10,7 @@
 // #define LIN_ALT_TAB        LALT(KC_TAB)           //Switch windows Alt+Tab
 #define LIN_SW_TO_WS_DOWN  LGUI(KC_PGDOWN)    // Switch to workspace down
 #define LIN_SW_TO_WS_UP    LGUI(KC_PGUP)      //Switch to workspace up
-#define LIN_LAUNCHER       LGUI(KC_S)             // Show windows + launcher prompt
+#define LIN_LAUNCHER       LGUI(KC_A)             // Show windows + launcher prompt
 #define LIN_TAB_RIGHT      LCTL(KC_PGDOWN)        // Switch browser tab right
 #define LIN_TAB_LEFT       LCTL(KC_PGUP)          // Switch browser tab left
 #define LIN_MV_DISP_LEFT   LSFT(LGUI(KC_LEFT))    // Move window to display left
