@@ -59,6 +59,9 @@ enum custom_keycodes {  //   # Make sure have the awesome keycode ready
     TMUX_WIN_2,
     TMUX_WIN_3,
     TMUX_WIN_4,
-    TMUX_WIN_5
+    TMUX_WIN_5,
+    SW_ACTIVE_APP_WNDWS,
+    SW_WNDWS_ACTIVE_WS,
+
 };
 #endif

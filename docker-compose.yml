@@ -1,0 +1,12 @@
+version: "3"
+
+# networks:
+services:
+    qmk:
+        container_name: qmk
+        image: debian:11
+        restart: "no"
+        # user: "1000:1000"
+        entrypoint: ["sleep", "infinity"]
+        volumes:
+            - ./:/root/qmk_firmware

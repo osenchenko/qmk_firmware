@@ -188,7 +188,8 @@ void process_combo_event(uint16_t combo_index, bool pressed){
 bool is_alt_tab_active = false;
 bool is_vscode_ctrl_tab_active=false;
 bool is_mac_cmd_tab_active=false;
-
+bool is_switch_windows_on_active_ws_active = false;  //cmd+alt+' 
+bool is_switch_only_active_app_windows = false;  //ctrl+'
 LEADER_EXTERNS();
 
 void matrix_scan_user(void) {
@@ -238,6 +239,25 @@ void matrix_scan_user(void) {
         if (r==LIN || r ==WIN || r==MAC) {
             is_mac_cmd_tab_active=false;
             unregister_code(KC_LGUI);
+        }
+    }
+    
+    if (is_switch_windows_on_active_ws_active){
+        //second part of prossesing Alt-Tab
+        uint8_t r = get_highest_layer(layer_state);
+        if (r==LIN || r ==WIN || r==MAC) {
+            is_switch_windows_on_active_ws_active=false;
+            unregister_code(KC_LALT);
+            unregister_code(KC_LGUI);
+        }
+    }
+    
+    if (is_switch_only_active_app_windows){
+        //second part of prossesing Alt-Tab
+        uint8_t r = get_highest_layer(layer_state);
+        if (r==LIN || r ==WIN || r==MAC) {
+            is_switch_only_active_app_windows=false;
+            unregister_code(KC_LCTRL);
         }
     }
 }
@@ -290,6 +310,38 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             unregister_code(KC_TAB);
         }
         break;
+
+    case SW_ACTIVE_APP_WNDWS:
+        //first part of prossessing SW_ACTIVE_APP_WNDWS.
+        if (record->event.pressed) {
+                if(!is_switch_only_active_app_windows){
+                    is_switch_only_active_app_windows=true;
+                    register_code(KC_LCTRL);
+                }
+            register_code(KC_GRAVE);
+        } else {
+            unregister_code(KC_GRAVE);
+        }
+        break;
+
+    case SW_WNDWS_ACTIVE_WS:
+        //first part of prossessing SW_ACTIVE_APP_WNDWS.
+        if (record->event.pressed) {
+                if(!is_switch_windows_on_active_ws_active){
+                    is_switch_windows_on_active_ws_active=true;
+                    register_code(KC_LGUI);
+                    register_code(KC_LALT);
+                }
+            register_code(KC_GRAVE);
+        } else {
+            unregister_code(KC_GRAVE);
+        }
+        break;
+
+
+    
+
+
     case PROG_RIGHT_ARROW:
         if (record->event.pressed)
         {
