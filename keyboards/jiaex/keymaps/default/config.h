@@ -42,7 +42,7 @@ enum jiaex_layers {
     SPECIAL  // 16
 };
 
-#    include "quantum.h"
+#include "quantum.h"
 
 enum custom_keycodes {  //   # Make sure have the awesome keycode ready
     ALT_TAB = SAFE_RANGE,

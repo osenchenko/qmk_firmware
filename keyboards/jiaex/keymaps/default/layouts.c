@@ -22,7 +22,7 @@
 #define LIN_CLOSE_TAB      LCTL(KC_W)             // Close tab in browser
 #define LIN_MAX_WIN        LGUI(KC_UP)            // Maximize window
 #define LIN_MIN_WIN        LGUI(KC_H)            // Maximize window
-
+#define LIN_SHOW_WIN_OVERVIEW LCTL(LALT(KC_TAB)) // thumb button on MX3 Master is recognized as this combination
 /*
  #define LIN_  //
 */
@@ -233,11 +233,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      //┌─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┐          ┌─────────────┬─────────────┬─────────────┬─────────────┬───────────┬────────────┬──────────────┬─────────────┐
           MO(SPECIAL),    TMUX_WIN_1,   TMUX_WIN_2,   TMUX_WIN_3, TMUX_WIN_4,  TMUX_WIN_5,      KC_NO,      /* | */   KC_NO,        KC_NO,           KC_NO,       KC_NO,           KC_NO,       KC_NO,       KC_NO,         /*NO_KEY*/
      //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  /* | */ ├─────────────┼─────────────┼─────────────┼─────────────┼───────────┼────────────┼──────────────┼─────────────┤
-           KC_ESC,        KC_NO,TMUX_PREV_WIN,SW_ACTIVE_APP_WNDWS,TMUX_NEXT_WIN,KC_AUDIO_VOL_UP,LCTL(KC_EQUAL),/* | */   KC_NO,        KC_NO,           KC_NO,       KC_NO,           KC_NO,       KC_NO,       KC_NO,       KC_NO,
+           KC_ESC,     LSFT(KC_Q),TMUX_PREV_WIN,SW_ACTIVE_APP_WNDWS,TMUX_NEXT_WIN,KC_AUDIO_VOL_UP,LCTL(KC_EQUAL),/* | */   KC_NO,        KC_NO,           KC_NO,       KC_NO,           KC_NO,       KC_NO,       KC_NO,       KC_NO,
      //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  /* | */ ├─────────────┼─────────────┼─────────────┼─────────────┼───────────┼────────────┼──────────────┼─────────────┤
           KC_BSPACE,      KC_NO,         KC_NO, SW_WNDWS_ACTIVE_WS,    KC_NO, KC_AUDIO_VOL_DOWN,/*NO_KEY*/  /* | */   /*NO_KEY*/    TMUX_TO_PANE_LEFT,           KC_NO,       KC_NO,    TMUX_TO_PANE_RIGHT,     KC_NO,    KC_NO,      KC_ENTER,
      //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  /* | */ ├─────────────┼─────────────┼─────────────┼─────────────┼───────────┼────────────┼──────────────┼─────────────┤
-          KC_LSFT,      KC_NO,           KC_NO,       KC_NO,           KC_NO, KC_AUDIO_MUTE,LCTL(KC_MINUS), /* | */     KC_NO,      KC_NO,           KC_NO,       RCS(KC_F2),        KC_NO,   KC_NO,      KC_RSFT,        /*NO_KEY*/
+          KC_LSFT,      KC_NO,           KC_NO,       KC_NO,           KC_NO, KC_AUDIO_MUTE,LCTL(KC_MINUS), /* | */     KC_NO,      KC_NO,   LIN_SHOW_WIN_OVERVIEW,RCS(KC_F2),  KC_NO,       KC_NO,      KC_RSFT,        /*NO_KEY*/
      //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  /* | */ ├─────────────┼─────────────┼─────────────┼─────────────┼───────────┼────────────┼──────────────┼─────────────┤
           /*NO_KEY*/    KC_LCTL,      KC_LALT,       KC_LCTL,     KC_NO,         KC_NO,       KC_NO,        /* | */     KC_NO,       KC_LSHIFT,         KC_SPC,     KC_RCTL,        KC_RALT,    KC_RCTL     /*NO_KEY*/     /*NO_KEY*/
      //└─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┘  /* | */ └─────────────┴─────────────┴─────────────┴─────────────┴───────────┴────────────┴──────────────┴─────────────┘
