@@ -42,7 +42,7 @@ enum jiaex_layers {
     SPECIAL  // 16
 };
 
-#include "quantum.h"
+#    include "quantum.h"
 
 enum custom_keycodes {  //   # Make sure have the awesome keycode ready
     ALT_TAB = SAFE_RANGE,
@@ -50,7 +50,7 @@ enum custom_keycodes {  //   # Make sure have the awesome keycode ready
     MAC_CMD_TAB,
     PROG_RIGHT_ARROW,      // ->
     PROG_FAT_RIGHT_ARROW,  //=>
-    COPY_URL_IN_BROWSER,    // F6 -> Ctrl+C
+    COPY_URL_IN_BROWSER,   // F6 -> Ctrl+C
     TMUX_NEXT_WIN,
     TMUX_PREV_WIN,
     TMUX_TO_PANE_RIGHT,
@@ -62,6 +62,5 @@ enum custom_keycodes {  //   # Make sure have the awesome keycode ready
     TMUX_WIN_5,
     SW_ACTIVE_APP_WNDWS,
     SW_WNDWS_ACTIVE_WS,
-
 };
 #endif
