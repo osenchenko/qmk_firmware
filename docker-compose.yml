@@ -1,10 +1,8 @@
-version: "3"
-
 # networks:
 services:
     qmk:
         container_name: qmk
-        image: debian:11
+        image: qmk:jiaex
         restart: "no"
         # user: "1000:1000"
         entrypoint: ["sleep", "infinity"]
