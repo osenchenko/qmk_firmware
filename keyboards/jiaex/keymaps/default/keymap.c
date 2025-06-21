@@ -251,6 +251,9 @@ void matrix_scan_user(void) {
         if (r == LIN || r == WIN || r == MAC) {
             is_switch_only_active_app_windows = false;
             unregister_code(KC_LCTRL);
+            unregister_code(KC_RSFT);
+            unregister_code(KC_LALT);
+            // unregister_code(KC_LCTRL);
         }
     }
 }
@@ -309,10 +312,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 if (!is_switch_only_active_app_windows) {
                     is_switch_only_active_app_windows = true;
                     register_code(KC_LCTRL);
+                    register_code(KC_RSFT);
+                    register_code(KC_LALT);
                 }
-                register_code(KC_GRAVE);
+                register_code(KC_0);
             } else {
-                unregister_code(KC_GRAVE);
+                unregister_code(KC_0);
             }
             break;
 
